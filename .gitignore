@@ -1,0 +1,11 @@
+# Ignore Visual Studio cache and temporary files
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# Ignore node_modules if any
+node_modules/

@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Portfolio - Halimat Bakare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <style>
+        /* Global Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        /* Header & Nav */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #4CAF50;
+            padding: 15px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            header h1 {
+                color: white;
+                font-size: 2rem;
+                margin: 0;
+            }
+
+        nav {
+            margin-top: 10px;
+        }
+
+            nav a {
+                margin: 0 15px;
+                color: white;
+                font-weight: 600;
+                transition: color 0.3s;
+            }
+
+                nav a:hover {
+                    color: #ffeb3b;
+                }
+
+        #toggleTheme {
+            margin-left: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background: white;
+            color: #4CAF50;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+            #toggleTheme:hover {
+                background: #f1f1f1;
+            }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Skills & Tools Section */
+        .skills {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+            .skills h2 {
+                color: #4CAF50;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress {
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: #4CAF50;
+            transition: width 1.5s ease;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tool {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #4CAF50;
+            transition: transform 0.3s;
+        }
+
+            .tool:hover {
+                transform: scale(1.2);
+            }
+
+        /* Project Cards */
+        .project {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+            .project.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .project h2 {
+                color: #4CAF50;
+                margin-bottom: 10px;
+            }
+
+            .project p {
+                margin: 10px 0;
+                line-height: 1.6;
+            }
+
+        /* Screenshots */
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+            .screenshots img {
+                width: calc(33% - 10px);
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
+
+                .screenshots img:hover {
+                    transform: scale(1.08);
+                }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+            .btn:hover {
+                background: #45a049;
+                transform: translateY(-2px);
+            }
+
+        /* Contact Section */
+        .contact {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+            .contact a {
+                display: inline-block;
+                margin: 10px;
+                color: white;
+                font-weight: 600;
+                background: #4CAF50;
+                padding: 10px 15px;
+                border-radius: 5px;
+                transition: background 0.3s;
+            }
+
+                .contact a:hover {
+                    background: #45a049;
+                }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            background: #222;
+            color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        /* Dark Mode */
+        body.dark {
+            background: #121212;
+            color: #f0f0f0;
+        }
+
+            body.dark header {
+                background: #1e1e1e;
+            }
+
+            body.dark nav a {
+                color: white;
+            }
+
+            body.dark .project {
+                background: #1e1e1e;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+            }
+
+            body.dark .skills {
+                background: #1e1e1e;
+            }
+
+            body.dark .contact {
+                background: #1e1e1e;
+            }
+
+            body.dark .btn {
+                background: #bb86fc;
+                color: #121212;
+            }
+
+                body.dark .btn:hover {
+                    background: #9b5de5;
+                    color: white;
+                }
+
+            body.dark .progress-bar {
+                background: #bb86fc;
+            }
+
+        /* Responsive */
+        @media(max-width:1024px) {
+            .screenshots img {
+                width: 48%;
+            }
+        }
+
+        @media(max-width:600px) {
+            .screenshots img {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                margin: 8px 0;
+            }
+
+            #toggleTheme {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <h1>QA Portfolio - Halimat Bakare</h1>
+        <nav>
+            <a href="#skills">Skills & Tools</a>
+            <a href="#lemfi">LemFi App</a>
+            <a href="#saucedemo">SauceDemo</a>
+            <a href="#internet-app">Internet App</a>
+            <a href="#contact">Contact Me</a>
+            <button id="toggleTheme">Dark/Light Mode</button>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Skills & Tools Section -->
+        <div class="skills" id="skills">
+            <h2>Skills & Tools</h2>
+
+            <!-- Skill Progress Bars -->
+            <div class="skill">
+                <div class="skill-label"><span>Manual Testing</span><span>90%</span></div>
+                <div class="progress"><div class="progress-bar" data-width="90%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-label"><span>Automation Testing (Selenium/Appium/Cypress)</span><span>85%</span></div>
+                <div class="progress"><div class="progress-bar" data-width="85%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-label"><span>API Testing (Postman)</span><span>80%</span></div>
+                <div class="progress"><div class="progress-bar" data-width="80%"></div></div>
+            </div>
+
+            <!-- Tools Icons -->
+            <div class="tools">
+                <div class="tool" title="Selenium"><i class="fa-brands fa-selenium"></i></div>
+                <div class="tool" title="Appium"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div class="tool" title="Cypress"><i class="fa-brands fa-js"></i></div>
+                <div class="tool" title="Postman"><i class="fa-brands fa-js-square"></i></div>
+                <div class="tool" title="Jira"><i class="fa-solid fa-clipboard-list"></i></div>
+            </div>
+        </div>
+
+        <!-- Project 1: LemFi App -->
+        <div class="project" id="lemfi">
+            <h2>LemFi App - Automated Onboarding</h2>
+            <p>
+                Automated testing of the LemFi onboarding process including device justification, manual test planning, and bug tracking.
+                <strong>Tools used:</strong> Appium, Node.js, Jira.
+            </p>
+            <!--
+                    <div class="screenshots">
+        <img src="screenshots/lemfi1.png" alt="LemFi Screenshot 1">
+        <img src="screenshots/lemfi2.png" alt="LemFi Screenshot 2">
+        <img src="screenshots/lemfi3.png" alt="LemFi Screenshot 3">
+    </div>
+                -->
+
+            <a href="https://github.com/TinyHumann/Lemfi_Autoumation" class="btn" target="_blank">View GitHub Scripts</a>
+        </div>
+
+        <!-- Project 2: SauceDemo Website -->
+        <div class="project" id="saucedemo">
+            <h2>SauceDemo Website - E-commerce Testing</h2>
+            <p>
+                Manual test cases and testing of the SauceDemo website including login, product purchase, and checkout flows.
+                <strong>Tools used:</strong> Excel.
+            </p>
+            <!--
+                    <div class="screenshots">
+        <img src="screenshots/saucedemo1.png" alt="SauceDemo Screenshot 1">
+        <img src="screenshots/saucedemo2.png" alt="SauceDemo Screenshot 2">
+        <img src="screenshots/saucedemo3.png" alt="SauceDemo Screenshot 3">
+    </div>
+               -->
+
+            <a href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q/edit?usp=sharing" class="btn" target="_blank">View GitHub Scripts</a>
+        </div>
+
+        <!-- Project 3: Internet App Automation -->
+        <div class="project" id="internet-app">
+            <h2>Internet App - Web Automation</h2>
+            <p>
+                Automated testing of web app functionality including form submissions, navigation, and error handling.
+                <strong>Tools used:</strong> Cypress.
+            </p>
+            <!--
+
+    <div class="screenshots">
+        <img src="screenshots/internetapp1.png" alt="Internet App Screenshot 1">
+        <img src="screenshots/internetapp2.png" alt="Internet App Screenshot 2">
+        <img src="screenshots/internetapp3.png" alt="Internet App Screenshot 3">
+    </div>
+    -->
+            <a href="https://github.com/TinyHumann/The_Internet" class="btn" target="_blank">View GitHub Scripts</a>
+        </div>
+
+        <!-- Contact Me Section -->
+        <div class="contact" id="contact">
+            <h2>Contact Me</h2>
+            <p>Get in touch for QA opportunities, collaborations, or freelance work:</p>
+            <a href="https://www.linkedin.com/in/halimatbakare;" target="_blank">LinkedIn</a>
+            <a href="QA_Portfolio_Summary.pdf" target="_blank">Download Portfolio PDF</a>
+            <a href="halimatbakare10@gmail.com">Email Me</a>
+            <a href="tel:+2349157589918">Call Me</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Halimat Bakare | Designed for QA Portfolio Showcase
+    </footer>
+
+    <!-- JS for Dark/Light Mode & Animations -->
+    <script>
+    // Dark/Light Toggle
+    const toggleBtn = document.getElementById('toggleTheme');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    // Animate Projects on Scroll
+    const projects = document.querySelectorAll('.project');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    projects.forEach(project => observer.observe(project));
+
+    // Animate Skill Bars on Scroll
+    const skillBars = document.querySelectorAll('.progress-bar');
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.width = entry.target.getAttribute('data-width');
+        }
+      });
+    }, { threshold: 0.5 });
+    skillBars.forEach(bar => skillObserver.observe(bar));
+    </script>
+
+</body>
+</html>
