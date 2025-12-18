@@ -1,21 +1,45 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Portfolio - Halimat Bakare</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Portfolio | Halimat Bakare</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <style>
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --primary: #4F46E5;
+            --accent: #0EA5E9;
+            --bg: #F8FAFC;
+            --card: #FFFFFF;
+            --text: #0F172A;
+            --muted: #64748B;
+            --border: #E5E7EB;
+        }
+
+        body.dark {
+            --bg: #0B1120;
+            --card: #111827;
+            --text: #E5E7EB;
+            --muted: #9CA3AF;
+            --border: #1F2937;
+            --primary: #60A5FA;
+            --accent: #38BDF8;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
             margin: 0;
-            background: #f8fafc;
-            color: #1f2937;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
             transition: all 0.3s ease;
         }
 
@@ -24,349 +48,324 @@
             color: inherit;
         }
 
-        /* ===== HEADER ===== */
+        /* Header */
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-            padding: 18px 0;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 20px;
         }
 
-            header h1 {
-                color: #fff;
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+            .nav h1 {
+                font-size: 1.3rem;
                 margin: 0;
-                font-size: 2rem;
+                font-weight: 700;
             }
 
-        nav {
-            margin-top: 10px;
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
-            nav a {
-                margin: 0 14px;
-                color: #e0e7ff;
-                font-weight: 600;
-            }
-
-                nav a:hover {
-                    color: #fff;
-                }
-
-        #toggleTheme {
-            margin-left: 12px;
-            background: #fff;
-            color: #4f46e5;
-            border: none;
+        .toggle {
+            background: white;
+            color: var(--primary);
             padding: 6px 12px;
-            border-radius: 20px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
         }
 
-        /* ===== LAYOUT ===== */
+        /* Layout */
         .container {
             max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
+            margin: auto;
+            padding: 30px 20px 60px;
         }
 
-        /* ===== SKILLS ===== */
-        .skills {
-            background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        section {
+            margin-bottom: 60px;
         }
 
-            .skills h2 {
-                text-align: center;
-                color: #4f46e5;
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 40px 10px 60px;
+        }
+
+            .hero h2 {
+                font-size: clamp(1.6rem, 4vw, 2.4rem);
+                margin-bottom: 10px;
             }
 
+            .hero p {
+                max-width: 700px;
+                margin: auto;
+                color: var(--muted);
+                font-size: 1.05rem;
+            }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+            transition: transform 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-4px);
+            }
+
+        h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Skills */
         .skill {
             margin-bottom: 18px;
         }
 
-        .skill-label {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-        }
-
-        .progress {
-            background: #e5e7eb;
-            height: 14px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            transition: width 1.5s ease;
-        }
-
-        /* ===== TOOLS ===== */
-        .tools {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .tool {
-            font-size: 1.6rem;
-            color: #6366f1;
-            transition: transform 0.3s;
-        }
-
-            .tool:hover {
-                transform: scale(1.2);
+            .skill span {
+                font-weight: 600;
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.95rem;
             }
 
-        /* ===== PROJECT CARDS ===== */
-        .project {
-            background: #fff;
-            padding: 28px;
+        .bar {
+            height: 10px;
+            background: var(--border);
             border-radius: 20px;
-            margin-top: 35px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.6s ease;
+            overflow: hidden;
+            margin-top: 6px;
         }
 
-            .project.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
 
-            .project h2 {
-                color: #4f46e5;
-            }
+        /* Projects */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
 
-        /* ===== BUTTONS ===== */
+        .project-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 12px;
-            padding: 12px 22px;
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-            color: #fff;
-            border-radius: 12px;
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
             font-weight: 600;
         }
 
-            .btn:hover {
-                opacity: 0.9;
-                transform: translateY(-2px);
-            }
-
-        /* ===== CONTACT ===== */
+        /* Contact */
         .contact {
-            margin-top: 50px;
-            background: linear-gradient(135deg, #1f2937, #111827);
-            color: #fff;
-            padding: 45px 20px;
             text-align: center;
-            border-radius: 25px;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px 20px;
         }
 
             .contact a {
                 display: inline-block;
-                margin: 10px;
-                padding: 12px 18px;
-                background: #6366f1;
+                margin: 8px;
+                padding: 12px 16px;
                 border-radius: 10px;
+                background: var(--primary);
+                color: white;
                 font-weight: 600;
             }
 
-                .contact a:hover {
-                    background: #4f46e5;
-                }
-
-        /* ===== FOOTER ===== */
         footer {
             text-align: center;
-            padding: 25px;
-            color: #9ca3af;
+            color: var(--muted);
+            padding-bottom: 40px;
+            font-size: 0.9rem;
         }
 
-        /* ===== DARK MODE ===== */
-        body.dark {
-            background: #0f172a;
-            color: #e5e7eb;
+        /* Mobile Optimisation */
+        @media (max-width: 600px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 20px 0 40px;
+            }
+
+            .contact a {
+                width: 100%;
+                max-width: 280px;
+            }
         }
-
-            body.dark .skills,
-            body.dark .project {
-                background: #020617;
-            }
-
-            body.dark header {
-                background: linear-gradient(135deg, #0f172a, #1e1b4b);
-            }
-
-            body.dark .progress-bar {
-                background: linear-gradient(90deg, #a78bfa, #7c3aed);
-            }
     </style>
-
 </head>
 <body>
 
-    <!-- Header & Navigation -->
     <header>
-        <h1>QA Portfolio - Halimat Bakare</h1>
-        <nav>
-            <a href="#skills">Skills & Tools</a>
-            <a href="#lemfi">LemFi App</a>
-            <a href="#saucedemo">SauceDemo</a>
-            <a href="#internet-app">Internet App</a>
-            <a href="#contact">Contact Me</a>
-            <button id="toggleTheme">Dark/Light Mode</button>
-        </nav>
+        <div class="nav">
+            <h1>Halimat Bakare</h1>
+            <div class="nav-links">
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <span class="toggle" id="themeToggle">Dark / Light</span>
+            </div>
+        </div>
     </header>
 
     <div class="container">
 
-        <!-- Skills & Tools Section -->
-        <div class="skills" id="skills">
-            <h2>Skills & Tools</h2>
-
-            <!-- Skill Progress Bars -->
-            <div class="skill">
-                <div class="skill-label"><span>Manual Testing</span><span>90%</span></div>
-                <div class="progress"><div class="progress-bar" data-width="90%"></div></div>
-            </div>
-            <div class="skill">
-                <div class="skill-label"><span>Automation Testing (Selenium/Appium/Cypress)</span><span>85%</span></div>
-                <div class="progress"><div class="progress-bar" data-width="85%"></div></div>
-            </div>
-            <div class="skill">
-                <div class="skill-label"><span>API Testing (Postman)</span><span>80%</span></div>
-                <div class="progress"><div class="progress-bar" data-width="80%"></div></div>
-            </div>
-
-            <!-- Tools Icons -->
-            <div class="tools">
-                <div class="tool" title="Selenium"><i class="fa-brands fa-selenium"></i></div>
-                <div class="tool" title="Appium"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <div class="tool" title="Cypress"><i class="fa-brands fa-js"></i></div>
-                <div class="tool" title="Postman"><i class="fa-brands fa-js-square"></i></div>
-                <div class="tool" title="Jira"><i class="fa-solid fa-clipboard-list"></i></div>
-            </div>
-        </div>
-
-        <!-- Project 1: LemFi App -->
-        <div class="project" id="lemfi">
-            <h2>LemFi App - Automated Onboarding</h2>
+        <section class="hero">
+            <h2>QA Engineer — Manual & Automation Testing</h2>
             <p>
-                Automated testing of the LemFi onboarding process including device justification, manual test planning, and bug tracking.
-                <strong>Tools used:</strong> Appium, Node.js, Jira.
+                Detail-oriented QA Engineer with hands-on experience in manual, automated, and mobile testing.
+                Proven ability to design test strategies, identify critical defects, and improve product quality
+                across fintech and web-based applications.
             </p>
-            <!--
-                    <div class="screenshots">
-        <img src="screenshots/lemfi1.png" alt="LemFi Screenshot 1">
-        <img src="screenshots/lemfi2.png" alt="LemFi Screenshot 2">
-        <img src="screenshots/lemfi3.png" alt="LemFi Screenshot 3">
-    </div>
-                -->
+        </section>
 
-            <a href="https://github.com/TinyHumann/Lemfi_Autoumation" class="btn" target="_blank">View GitHub Scripts</a>
-        </div>
+        <section id="skills" class="card">
+            <h3>Skills & Tools</h3>
 
-        <!-- Project 2: SauceDemo Website -->
-        <div class="project" id="saucedemo">
-            <h2>SauceDemo Website - E-commerce Testing</h2>
-            <p>
-                Manual test cases and testing of the SauceDemo website including login, product purchase, and checkout flows.
-                <strong>Tools used:</strong> Excel.
+            <div class="skill">
+                <span>Manual Testing <strong>90%</strong></span>
+                <div class="bar"><div class="bar-fill" style="width:90%"></div></div>
+            </div>
+
+            <div class="skill">
+                <span>Automation (Appium, Cypress, Selenium) <strong>85%</strong></span>
+                <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+            </div>
+
+            <div class="skill">
+                <span>API Testing (Postman) <strong>80%</strong></span>
+                <div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3>Selected Projects</h3>
+            <div class="projects">
+
+                <div class="card">
+                    <h3>LemFi Mobile App – Onboarding Automation</h3>
+                    <p class="project-desc">
+                        Designed and executed an end-to-end automated test framework for a fintech mobile application’s
+                        onboarding flow. Covered country selection, identity verification checkpoints, and error handling.
+                        Collaborated with stakeholders to validate business rules and significantly reduce regression defects.
+                    </p>
+                    <p class="project-desc"><strong>Tools:</strong> Appium, JavaScript, Android Emulator, Jira</p>
+                    <a class="btn" href="https://github.com/TinyHumann/Lemfi_Autoumation" target="_blank">View Automation Repo</a>
+                </div>
+
+                <div class="card">
+                    <h3>SauceDemo – E‑commerce Test Planning</h3>
+                    <p class="project-desc">
+                        Developed a comprehensive manual test plan for an e‑commerce platform, covering functional,
+                        boundary, and negative test scenarios across login, cart, and checkout workflows.
+                        Ensured traceability between requirements, test cases, and expected outcomes.
+                    </p>
+                    <p class="project-desc"><strong>Tools:</strong> Excel, Test Case Design Techniques</p>
+                    <a class="btn" href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q/edit" target="_blank">View Test Plan</a>
+                </div>
+
+                <div class="card">
+                    <h3>The Internet App – Web Automation</h3>
+                    <p class="project-desc">
+                        Implemented automated UI tests for a web application to validate forms, dynamic elements,
+                        alerts, and navigation flows. Improved test reliability by handling asynchronous behaviour
+                        and edge-case user interactions.
+                    </p>
+                    <p class="project-desc"><strong>Tools:</strong> Cypress, JavaScript</p>
+                    <a class="btn" href="https://github.com/TinyHumann/The_Internet" target="_blank">View Automation Repo</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="why-hire-me" class="card">
+            <h3>Why Hire Me</h3>
+            <p class="project-desc">
+                I am a quality-focused QA Engineer with strong experience across manual, automation, and mobile testing, capable of operating effectively in fast-paced, remote-first product teams. I approach testing from both a technical and business-risk perspective, ensuring critical user journeys, integrations, and edge cases are validated before release.
             </p>
-            <!--
-                    <div class="screenshots">
-        <img src="screenshots/saucedemo1.png" alt="SauceDemo Screenshot 1">
-        <img src="screenshots/saucedemo2.png" alt="SauceDemo Screenshot 2">
-        <img src="screenshots/saucedemo3.png" alt="SauceDemo Screenshot 3">
-    </div>
-               -->
-
-            <a href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q/edit?usp=sharing"
-               class="btn" target="_blank">
-                View Test Plan
-            </a>
-
-        </div>
-
-        <!-- Project 3: Internet App Automation -->
-        <div class="project" id="internet-app">
-            <h2>Internet App - Web Automation</h2>
-            <p>
-                Automated testing of web app functionality including form submissions, navigation, and error handling.
-                <strong>Tools used:</strong> Cypress.
+            <p class="project-desc">
+                My background in fintech and e-commerce testing has equipped me to work with complex workflows such as onboarding, authentication, payments, and data validation across multiple devices and environments. I collaborate closely with developers and product managers, providing clear, actionable defect reports that accelerate fixes rather than slow teams down.
             </p>
-            <!--
+            <p class="project-desc">
+                I take ownership of quality outcomes, continuously improve test coverage through automation where it adds value, and advocate for scalable QA practices that support long-term product growth.
+            </p>
+        </section>
 
-    <div class="screenshots">
-        <img src="screenshots/internetapp1.png" alt="Internet App Screenshot 1">
-        <img src="screenshots/internetapp2.png" alt="Internet App Screenshot 2">
-        <img src="screenshots/internetapp3.png" alt="Internet App Screenshot 3">
+        <section id="first-30-days" class="card">
+            <h3>What I Bring in My First 30 Days</h3>
+
+            <p class="project-desc">
+                <strong>Week 1: Product & Quality Understanding</strong><br />
+                Quickly ramp up on the product, user personas, and business objectives. Review existing documentation, requirements, and test assets while setting up local and CI testing environments. Identify high-risk areas and clarify quality expectations with the team.
+            </p>
+
+            <p class="project-desc">
+                <strong>Week 2: Test Coverage & Process Alignment</strong><br />
+                Design or refine test plans and test cases aligned with real user flows. Begin executing exploratory and regression testing, ensuring defects are logged with clear reproduction steps, impact analysis, and priority recommendations.
+            </p>
+
+            <p class="project-desc">
+                <strong>Week 3–4: Automation & Quality Optimization</strong><br />
+                Contribute to or extend existing automation frameworks using industry-standard tools. Focus automation efforts on stable, high-value scenarios while improving overall test efficiency. Proactively suggest process improvements to reduce release risk and increase delivery confidence.
+            </p>
+
+            <p class="project-desc">
+                By the end of the first month, I aim to be a fully contributing QA partner — adding measurable value through improved coverage, reduced defects, and stronger collaboration across the engineering team.
+            </p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h3>Contact</h3>
+            <p class="project-desc">Open to QA roles, internships, and freelance testing projects.</p>
+            <a href="mailto:halimatbakare10@gmail.com">Email Me</a>
+            <a href="https://www.linkedin.com/in/halimatbakare" target="_blank">LinkedIn</a>
+            <a href="QA_Portfolio_Summary.pdf" target="_blank">Download PDF</a>
+        </section>
+
     </div>
-    -->
-            <a href="https://github.com/TinyHumann/The_Internet" class="btn" target="_blank">View GitHub Scripts</a>
-        </div>
 
-        <!-- Contact Me Section -->
-        <div class="contact" id="contact">
-            <h2>Contact Me</h2>
-            <p>Get in touch for QA opportunities, collaborations, or freelance work:</p>
-            <a href="https://www.linkedin.com/in/halimatbakare;" target="_blank">LinkedIn</a>
-            <a href="QA_Portfolio_Summary.pdf" target="_blank">Download Portfolio PDF</a>
-            <a href="mailto:halimatbakare10@gmail.com?subject=QA Opportunity&body=Hello Halimat,%0D%0A%0D%0AI viewed your QA portfolio and would love to connect.">
-                Email Me
-            </a>
-            <a href="tel:+2349157589918">Call Me</a>
-        </div>
-
-    </div>
-
-    <!-- Footer -->
     <footer>
-        &copy; 2025 Halimat Bakare | Designed for QA Portfolio Showcase
+        © 2025 Halimat Bakare · QA Portfolio
     </footer>
 
-    <!-- JS for Dark/Light Mode & Animations -->
     <script>
-    // Dark/Light Toggle
-    const toggleBtn = document.getElementById('toggleTheme');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-    });
-
-    // Animate Projects on Scroll
-    const projects = document.querySelectorAll('.project');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    projects.forEach(project => observer.observe(project));
-
-    // Animate Skill Bars on Scroll
-    const skillBars = document.querySelectorAll('.progress-bar');
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.style.width = entry.target.getAttribute('data-width');
-        }
-      });
-    }, { threshold: 0.5 });
-    skillBars.forEach(bar => skillObserver.observe(bar));
+        document.getElementById('themeToggle').onclick = () => {
+            document.body.classList.toggle('dark');
+        };
     </script>
 
 </body>
