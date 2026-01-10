@@ -28,26 +28,29 @@
 
         body {
             margin: 0;
-            font-family: system-ui, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             transition: background 0.4s, color 0.4s;
+            overflow-x: hidden;
         }
 
         /* HEADER */
         header {
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px 40px;
         }
 
             header h1 {
-                font-size: 2.5rem;
+                font-size: 2.6rem;
+                margin-bottom: 10px;
             }
 
             header p {
-                max-width: 700px;
+                max-width: 720px;
                 margin: auto;
                 color: var(--muted);
+                font-size: 1.05rem;
             }
 
         /* THEME TOGGLE */
@@ -56,122 +59,115 @@
             top: 20px;
             right: 20px;
             background: var(--card);
-            border-radius: 20px;
             padding: 8px 14px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
             z-index: 10;
         }
 
-        /* ILLUSTRATION */
-        .illustration {
-            font-size: 4rem;
-            margin-top: 20px;
-            animation: float 4s ease-in-out infinite;
+        /* PROJECT MARQUEE */
+        .projects-section {
+            padding: 50px 0;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
+        .projects-title {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
         }
 
-        /* PROJECTS */
-        .projects-wrapper {
-            padding: 40px 20px;
-        }
-
-        .projects-container {
+        .marquee {
             display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
+            gap: 25px;
+            width: max-content;
+            animation: scroll 35s linear infinite;
         }
 
+        .marquee-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .marquee-wrapper:hover .marquee {
+                animation-play-state: paused;
+            }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* PROJECT CARD */
         .project-card {
-            min-width: 320px;
+            width: 320px;
             background: var(--card);
-            padding: 20px;
-            border-radius: 18px;
-            scroll-snap-align: start;
-            cursor: pointer;
+            border-radius: 20px;
+            padding: 22px;
+            position: relative;
             transition: transform 0.3s;
         }
 
             .project-card:hover {
-                transform: translateY(-6px);
+                transform: translateY(-8px);
             }
 
         .project-title {
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.1rem;
+            margin-bottom: 6px;
         }
 
-        .tools {
+        .project-tools {
             font-size: 0.85rem;
             color: var(--accent);
         }
 
-        .details {
-            display: none;
-            margin-top: 12px;
-            font-size: 0.9rem;
-            animation: fadeSlide 0.4s ease;
+        /* HOVER DETAILS */
+        .project-details {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            margin-top: 14px;
+            font-size: 0.92rem;
+            color: var(--muted);
         }
 
-        .project-card.active .details {
-            display: block;
+        .project-card:hover .project-details {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes fadeSlide {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+        /* SECTIONS */
+        .section {
+            max-width: 900px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+
+            .section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                color: var(--accent);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .section p {
+                font-size: 1rem;
+                line-height: 1.8;
+                color: var(--muted);
+                margin-bottom: 14px;
             }
-        }
 
-        /* ANALYTICS */
-        .analytics {
-            max-width: 700px;
-            margin: 60px auto;
-            background: var(--card);
-            padding: 25px;
-            border-radius: 18px;
-        }
-
-        .bar {
-            height: 10px;
-            background: #334155;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #22d3ee);
-            width: 0%;
-            transition: width 0.6s ease;
-        }
-
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 30px;
-            font-size: 0.8rem;
+            padding: 40px 20px;
+            font-size: 0.85rem;
             color: var(--muted);
         }
     </style>
@@ -184,134 +180,132 @@
     <header>
         <h1>Quality Assurance Engineer</h1>
         <p>
-            Remote-ready QA Engineer (US / UK time zones) with experience testing fintech,
-            e-commerce, and web platforms using manual and automated approaches.
+            Remote-ready QA Engineer (US & UK time zones) with experience testing
+            fintech, e-commerce, and web platforms. Skilled in manual testing,
+            automation, and quality advocacy across fast-paced product teams.
         </p>
-        <div class="illustration">🧪💻🚀</div>
     </header>
 
-    <!-- PROJECT CAROUSEL -->
-    <section class="projects-wrapper">
-        <h2 style="text-align:center">Projects</h2>
+    <!-- PROJECTS -->
+    <section class="projects-section">
+        <div class="projects-title">Selected Projects</div>
 
-        <div class="projects-container" id="carousel">
+        <div class="marquee-wrapper">
+            <div class="marquee">
 
-            <div class="project-card" tabindex="0">
-                <div class="project-title">LemFi Mobile App — Fintech QA</div>
-                <div class="tools">Appium · WebdriverIO · JavaScript</div>
-                <div class="details">
-                    Automated and manual testing of onboarding, KYC, transfers, and edge cases
-                    in a fintech mobile application.
+                <!-- DUPLICATED SET FOR INFINITE LOOP -->
+                <div class="project-card">
+                    <div class="project-title">LemFi Mobile App — Fintech QA</div>
+                    <div class="project-tools">Appium · WebdriverIO · JavaScript</div>
+                    <div class="project-details">
+                        Led manual and automated testing of onboarding, KYC verification,
+                        and transaction flows for a fintech mobile application. Focused on
+                        validating error handling, edge cases, and high-risk user journeys
+                        impacting regulatory compliance and customer trust.
+                    </div>
                 </div>
-            </div>
 
-            <div class="project-card" tabindex="0">
-                <div class="project-title">Amazon Web App — E-commerce Testing</div>
-                <div class="tools">Cypress · Selenium · Manual QA</div>
-                <div class="details">
-                    Tested product discovery, cart persistence, and checkout flows on a
-                    high-traffic e-commerce platform using risk-based testing.
+                <div class="project-card">
+                    <div class="project-title">Amazon Web App — E-commerce Testing</div>
+                    <div class="project-tools">Cypress · Selenium · Manual QA</div>
+                    <div class="project-details">
+                        Executed functional and regression testing on Amazon-style e-commerce
+                        flows including product discovery, filtering, cart persistence, and
+                        checkout. Applied risk-based testing techniques to prioritize
+                        high-traffic and revenue-critical scenarios.
+                    </div>
                 </div>
-            </div>
 
-            <div class="project-card" tabindex="0">
-                <div class="project-title">SauceDemo — Manual Test Planning</div>
-                <div class="tools">Test Design · Bug Reporting</div>
-                <div class="details">
-                    Created structured test plans, test cases, and defect documentation
-                    aligned with requirements.
+                <div class="project-card">
+                    <div class="project-title">SauceDemo — Manual Test Planning</div>
+                    <div class="project-tools">Test Case Design · Bug Reporting</div>
+                    <div class="project-details">
+                        Developed structured test plans and test cases covering functional,
+                        boundary, and negative scenarios. Ensured traceability between
+                        requirements, test coverage, and expected outcomes.
+                    </div>
                 </div>
-            </div>
 
-            <div class="project-card" tabindex="0">
-                <div class="project-title">The Internet App — Web Automation</div>
-                <div class="tools">Selenium · JavaScript</div>
-                <div class="details">
-                    Automated UI tests for forms, alerts, authentication, and dynamic elements.
+                <div class="project-card">
+                    <div class="project-title">The Internet App — Web Automation</div>
+                    <div class="project-tools">Selenium · JavaScript</div>
+                    <div class="project-details">
+                        Automated UI tests for dynamic elements, authentication workflows,
+                        alerts, and forms. Improved test reliability by handling asynchronous
+                        behavior and real-world user interaction patterns.
+                    </div>
                 </div>
-            </div>
 
+                <!-- DUPLICATE FOR INFINITE EFFECT -->
+                <div class="project-card">
+                    <div class="project-title">LemFi Mobile App — Fintech QA</div>
+                    <div class="project-tools">Appium · WebdriverIO · JavaScript</div>
+                    <div class="project-details">
+                        Led manual and automated testing of onboarding, KYC verification,
+                        and transaction flows for a fintech mobile application.
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- ANALYTICS DASHBOARD -->
-    <section class="analytics">
-        <h3>Recruiter Interaction Analytics</h3>
-        <p class="muted">Shows which projects receive the most interest (clicks).</p>
-        <div id="analyticsData"></div>
+    <!-- WHY HIRE ME -->
+    <section class="section">
+        <h2>Why Hire Me</h2>
+        <p>
+            I bring a quality-first mindset that balances technical testing skills
+            with business risk awareness. I don’t just check if features work — I
+            validate whether they work for real users under real conditions.
+        </p>
+        <p>
+            With hands-on experience across fintech and e-commerce products, I am
+            comfortable testing complex workflows such as onboarding, authentication,
+            payments, and data-driven user journeys. I collaborate closely with
+            developers and product managers to deliver clear, actionable defect reports
+            that accelerate fixes and improve release confidence.
+        </p>
+    </section>
+
+    <!-- FIRST 30 DAYS -->
+    <section class="section">
+        <h2>What I Bring in My First 30 Days</h2>
+
+        <p>
+            <strong>Week 1 — Product & Risk Understanding:</strong><br />
+            Quickly ramp up on the product, users, and business goals. Review existing
+            documentation, test assets, and environments while identifying high-risk
+            areas and gaps in coverage.
+        </p>
+
+        <p>
+            <strong>Week 2 — Test Coverage & Execution:</strong><br />
+            Design or refine test plans aligned with real user flows. Begin exploratory,
+            functional, and regression testing while delivering clear defect reports
+            with priority and impact context.
+        </p>
+
+        <p>
+            <strong>Weeks 3–4 — Automation & Optimization:</strong><br />
+            Contribute to or extend automation suites for stable, high-value scenarios.
+            Improve testing efficiency, reduce regression risk, and proactively suggest
+            quality improvements that support faster, safer releases.
+        </p>
     </section>
 
     <footer>
-        © 2026 Halimat Bakare · QA Portfolio
+        © 2026 Halimat Bakare · QA Engineer Portfolio
     </footer>
 
     <script>
-        /* THEME */
         function toggleTheme() {
             document.body.classList.toggle("light");
             localStorage.setItem("theme", document.body.classList.contains("light"));
         }
+
         if (localStorage.getItem("theme") === "true") {
             document.body.classList.add("light");
         }
-
-        /* CAROUSEL AUTO SLIDE + PAUSE */
-        const carousel = document.getElementById("carousel");
-        let index = 0;
-        let interval;
-
-        function startSlide() {
-            interval = setInterval(() => {
-                index = (index + 1) % carousel.children.length;
-                carousel.children[index].scrollIntoView({ behavior: "smooth" });
-            }, 4000);
-        }
-
-        function stopSlide() {
-            clearInterval(interval);
-        }
-
-        carousel.addEventListener("mouseenter", stopSlide);
-        carousel.addEventListener("mouseleave", startSlide);
-        carousel.addEventListener("focusin", stopSlide);
-        carousel.addEventListener("focusout", startSlide);
-        startSlide();
-
-        /* INTERACTION + HEATMAP */
-        document.querySelectorAll(".project-card").forEach(card => {
-            card.addEventListener("click", () => {
-                card.classList.toggle("active");
-                track(card.querySelector(".project-title").innerText);
-                renderAnalytics();
-            });
-        });
-
-        /* TRACKING */
-        function track(project) {
-            const data = JSON.parse(localStorage.getItem("heatmap") || "{}");
-            data[project] = (data[project] || 0) + 1;
-            localStorage.setItem("heatmap", JSON.stringify(data));
-        }
-
-        /* ANALYTICS DASHBOARD */
-        function renderAnalytics() {
-            const data = JSON.parse(localStorage.getItem("heatmap") || "{}");
-            const container = document.getElementById("analyticsData");
-            container.innerHTML = "";
-
-            Object.entries(data).forEach(([project, count]) => {
-                const row = document.createElement("div");
-                row.innerHTML = `
-          <strong>${project}</strong> (${count})
-          <div class="bar">
-            <div class="bar-fill" style="width:${Math.min(count * 20, 100)}%"></div>
-          </div>
-        `;
-                container.appendChild(row);
-            });
-        }
-
-        renderAnalytics();
     </script>
 
 </body>
