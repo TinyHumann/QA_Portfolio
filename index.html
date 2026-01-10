@@ -2,36 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Remote QA Engineer Portfolio – Manual, Automation & Mobile Testing | Halimat Bakare">
-    <meta name="keywords" content="QA Engineer, Software Tester, Automation, Appium, Cypress, Selenium, Fintech QA, Remote QA">
-    <meta name="author" content="Halimat Bakare">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Remote QA Engineer | Halimat Bakare</title>
-
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>QA Engineer Portfolio | Halimat Bakare</title>
 
     <style>
         :root {
-            --primary: #4F46E5;
-            --accent: #0EA5E9;
-            --bg: #F8FAFC;
-            --card: #FFFFFF;
-            --text: #0F172A;
-            --muted: #64748B;
-            --border: #E5E7EB;
+            --bg: #0f172a;
+            --card: #020617;
+            --text: #e5e7eb;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
         }
 
-        body.dark {
-            --bg: #0B1120;
-            --card: #111827;
-            --text: #E5E7EB;
-            --muted: #9CA3AF;
-            --border: #1F2937;
-            --primary: #60A5FA;
-            --accent: #38BDF8;
+        .light {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --accent: #2563eb;
         }
 
         * {
@@ -40,96 +28,114 @@
 
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
-            transition: 0.3s ease;
+            transition: background 0.4s, color 0.4s;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
+        /* HEADER */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 20px;
-        }
-
-        .nav {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-            .nav h1 {
-                font-size: 1.3rem;
-                margin: 0;
-            }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-weight: 600;
-        }
-
-        .toggle {
-            background: white;
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 40px 20px 60px;
-        }
-
-        section {
-            margin-bottom: 60px;
-        }
-
-        .hero {
             text-align: center;
-            padding: 40px 10px;
+            padding: 50px 20px;
         }
 
-            .hero h2 {
-                font-size: clamp(1.9rem, 4vw, 2.6rem);
-                margin-bottom: 12px;
+            header h1 {
+                font-size: 2.5rem;
             }
 
-            .hero p {
-                max-width: 780px;
+            header p {
+                max-width: 700px;
                 margin: auto;
                 color: var(--muted);
-                font-size: 1.05rem;
             }
 
-        .card {
+        /* THEME TOGGLE */
+        .toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
             background: var(--card);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            animation: fadeUp 0.6s ease;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            z-index: 10;
         }
 
-        @keyframes fadeUp {
+        /* ILLUSTRATION */
+        .illustration {
+            font-size: 4rem;
+            margin-top: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* PROJECTS */
+        .projects-wrapper {
+            padding: 40px 20px;
+        }
+
+        .projects-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .project-card {
+            min-width: 320px;
+            background: var(--card);
+            padding: 20px;
+            border-radius: 18px;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+            .project-card:hover {
+                transform: translateY(-6px);
+            }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .tools {
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .details {
+            display: none;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .project-card.active .details {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(10px);
             }
 
             to {
@@ -138,273 +144,174 @@
             }
         }
 
-        h3 {
-            color: var(--primary);
-            margin-top: 0;
+        /* ANALYTICS */
+        .analytics {
+            max-width: 700px;
+            margin: 60px auto;
+            background: var(--card);
+            padding: 25px;
+            border-radius: 18px;
         }
-
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-
-        .metric h2 {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-
-        .skill {
-            margin-bottom: 18px;
-        }
-
-            .skill span {
-                font-weight: 600;
-                display: flex;
-                justify-content: space-between;
-                font-size: 0.95rem;
-            }
 
         .bar {
             height: 10px;
-            background: var(--border);
-            border-radius: 20px;
+            background: #334155;
+            border-radius: 10px;
             overflow: hidden;
-            margin-top: 6px;
+            margin-bottom: 15px;
         }
 
         .bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .project-desc {
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            font-weight: 600;
-        }
-
-        .contact {
-            text-align: center;
-            padding: 40px;
-            border-radius: 20px;
-            background: var(--card);
+            background: linear-gradient(90deg, var(--accent), #22d3ee);
+            width: 0%;
+            transition: width 0.6s ease;
         }
 
         footer {
             text-align: center;
+            padding: 30px;
+            font-size: 0.8rem;
             color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) {
-            .nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
         }
     </style>
 </head>
 
 <body>
 
+    <div class="toggle" onclick="toggleTheme()">🌗 Theme</div>
+
     <header>
-        <div class="nav">
-            <h1>Halimat Bakare</h1>
-            <div class="nav-links">
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#resume-alignment">Resume</a>
-                <a href="#contact">Contact</a>
-                <span class="toggle" id="themeToggle">Dark / Light</span>
-            </div>
-        </div>
+        <h1>Quality Assurance Engineer</h1>
+        <p>
+            Remote-ready QA Engineer (US / UK time zones) with experience testing fintech,
+            e-commerce, and web platforms using manual and automated approaches.
+        </p>
+        <div class="illustration">🧪💻🚀</div>
     </header>
 
-    <div class="container">
+    <!-- PROJECT CAROUSEL -->
+    <section class="projects-wrapper">
+        <h2 style="text-align:center">Projects</h2>
 
-        <!-- HERO -->
-        <section class="hero">
-            <h2>Remote QA Engineer — Manual, Automation & Mobile Testing</h2>
-            <p>
-                Remote-ready QA Engineer with hands-on experience testing fintech and large-scale
-                e-commerce applications for global users. Skilled in manual and automated testing
-                across web, mobile, and APIs, with a strong focus on risk-based testing, critical
-                user journeys, and release confidence in distributed teams.
-            </p>
-        </section>
+        <div class="projects-container" id="carousel">
 
-        <!-- METRICS -->
-        <section class="card">
-            <h3>Quality Impact</h3>
-            <div class="metrics">
-                <div class="metric">
-                    <h2>35%</h2>
-                    <p>Reduction in critical defects</p>
-                </div>
-                <div class="metric">
-                    <h2>20+</h2>
-                    <p>Automated end-to-end scenarios</p>
-                </div>
-                <div class="metric">
-                    <h2>90%</h2>
-                    <p>Coverage on core user flows</p>
+            <div class="project-card" tabindex="0">
+                <div class="project-title">LemFi Mobile App — Fintech QA</div>
+                <div class="tools">Appium · WebdriverIO · JavaScript</div>
+                <div class="details">
+                    Automated and manual testing of onboarding, KYC, transfers, and edge cases
+                    in a fintech mobile application.
                 </div>
             </div>
-        </section>
 
-        <!-- SKILLS -->
-        <section id="skills" class="card">
-            <h3>Skills & Tools</h3>
-
-            <div class="skill">
-                <span>Manual Testing <strong>90%</strong></span>
-                <div class="bar"><div class="bar-fill" style="width:90%"></div></div>
+            <div class="project-card" tabindex="0">
+                <div class="project-title">Amazon Web App — E-commerce Testing</div>
+                <div class="tools">Cypress · Selenium · Manual QA</div>
+                <div class="details">
+                    Tested product discovery, cart persistence, and checkout flows on a
+                    high-traffic e-commerce platform using risk-based testing.
+                </div>
             </div>
 
-            <div class="skill">
-                <span>Automation (Appium, Cypress, Selenium) <strong>85%</strong></span>
-                <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+            <div class="project-card" tabindex="0">
+                <div class="project-title">SauceDemo — Manual Test Planning</div>
+                <div class="tools">Test Design · Bug Reporting</div>
+                <div class="details">
+                    Created structured test plans, test cases, and defect documentation
+                    aligned with requirements.
+                </div>
             </div>
 
-            <div class="skill">
-                <span>API Testing (Postman) <strong>80%</strong></span>
-                <div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+            <div class="project-card" tabindex="0">
+                <div class="project-title">The Internet App — Web Automation</div>
+                <div class="tools">Selenium · JavaScript</div>
+                <div class="details">
+                    Automated UI tests for forms, alerts, authentication, and dynamic elements.
+                </div>
             </div>
-        </section>
 
-        <!-- PROJECTS -->
-        <section id="projects">
-            <h3>Selected Projects</h3>
-            <div class="projects">
+        </div>
+    </section>
 
-                <!-- LemFi -->
-                <div class="card">
-                    <h3>LemFi Mobile App — Fintech Automation</h3>
-                    <p class="project-desc">
-                        Designed and maintained an end-to-end mobile automation framework for a fintech
-                        application serving international users. Focused on onboarding reliability,
-                        country selection, identity verification checkpoints, and error handling across
-                        multiple environments.
-                    </p>
-                    <p class="project-desc"><strong>Tools:</strong> Appium, JavaScript, Android Emulator, Jira</p>
-                    <a class="btn" href="https://github.com/TinyHumann/Lemfi_Autoumation" target="_blank">Automation Repo</a>
-                    <a class="btn" href="https://docs.google.com/document/d/1y5x0u6kER3zPaezWrBa7KW5t_77DMN7fk_jnxsUC5Iw" target="_blank">Test Plan</a>
-                </div>
-
-                <!-- Amazon -->
-                <div class="card">
-                    <h3>Amazon Web Application — Functional & Automation Testing</h3>
-                    <p class="project-desc">
-                        Performed functional and automated testing on core Amazon e-commerce workflows,
-                        focusing on product search, filtering, cart operations, and checkout validation.
-                        Identified UI, functional, and edge-case defects affecting purchase flow
-                        reliability and user experience.
-                    </p>
-                    <p class="project-desc">
-                        Applied risk-based testing techniques to prioritize high-traffic user journeys
-                        and automated stable scenarios to support regression testing and reduce manual effort.
-                    </p>
-                    <p class="project-desc">
-                        <strong>Coverage Areas:</strong> Product discovery, add-to-cart, cart persistence,
-                        checkout flow, form validation, and error handling.
-                    </p>
-                    <p class="project-desc">
-                        <strong>Tools:</strong> Cypress / Selenium, JavaScript, Manual Test Cases, Browser DevTools
-                    </p>
-                    <a class="btn" href="https://github.com/TinyHumann/Amazon_Test" target="_blank">
-                        Automation Repo
-                    </a>
-                </div>
-
-                <!-- SauceDemo -->
-                <div class="card">
-                    <h3>SauceDemo — Manual Test Planning</h3>
-                    <p class="project-desc">
-                        Created a comprehensive manual test plan for an e-commerce platform, covering
-                        functional, boundary, and negative test scenarios across login, cart, and checkout
-                        workflows with clear traceability.
-                    </p>
-                    <p class="project-desc"><strong>Tools:</strong> Excel, Test Design Techniques</p>
-                    <a class="btn" href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q" target="_blank">View Test Plan</a>
-                </div>
-
-                <!-- The Internet -->
-                <div class="card">
-                    <h3>The Internet App — Web Automation</h3>
-                    <p class="project-desc">
-                        Implemented automated UI tests to validate forms, dynamic elements, alerts,
-                        and navigation flows. Improved test reliability by handling asynchronous behaviour
-                        and edge-case user interactions.
-                    </p>
-                    <p class="project-desc"><strong>Tools:</strong> Cypress, JavaScript</p>
-                    <a class="btn" href="https://github.com/TinyHumann/The_Internet" target="_blank">Automation Repo</a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- RESUME ALIGNMENT -->
-        <section id="resume-alignment" class="card">
-            <h3>Resume-to-Portfolio Alignment</h3>
-            <p class="project-desc">
-                This portfolio is a direct extension of my resume. Every skill listed on my CV is
-                demonstrated here through real automation repositories, structured test plans,
-                and practical QA workflows.
-            </p>
-            <p class="project-desc">
-                <strong>Manual & Exploratory Testing:</strong> Demonstrated through detailed test plans
-                and scenario-based testing across fintech and e-commerce platforms.
-            </p>
-            <p class="project-desc">
-                <strong>Automation & Technical Skills:</strong> Reflected in Appium and Cypress projects
-                covering stable, high-risk user journeys such as onboarding, checkout, and validation flows.
-            </p>
-            <p class="project-desc">
-                <strong>E-commerce & Product Focus:</strong> Shown through Amazon testing, validating
-                high-traffic user flows common to large-scale consumer applications.
-            </p>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="contact">
-            <h3>Let’s Work Together</h3>
-            <p class="project-desc">
-                Open to remote QA roles, contract opportunities, and freelance testing projects
-                with US, UK, and global teams.
-            </p>
-            <a class="btn" href="mailto:halimatbakare10@gmail.com">Email Me</a>
-            <a class="btn" href="https://www.linkedin.com/in/halimatbakare" target="_blank">LinkedIn</a>
-            <a class="btn" href="QA_Portfolio_Summary.pdf" target="_blank">Download PDF</a>
-        </section>
-
-    </div>
+    <!-- ANALYTICS DASHBOARD -->
+    <section class="analytics">
+        <h3>Recruiter Interaction Analytics</h3>
+        <p class="muted">Shows which projects receive the most interest (clicks).</p>
+        <div id="analyticsData"></div>
+    </section>
 
     <footer>
-        © 2025 Halimat Bakare · Remote QA Engineer
+        © 2026 Halimat Bakare · QA Portfolio
     </footer>
 
     <script>
-        document.getElementById("themeToggle").onclick = () => {
-            document.body.classList.toggle("dark");
-        };
+        /* THEME */
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+            localStorage.setItem("theme", document.body.classList.contains("light"));
+        }
+        if (localStorage.getItem("theme") === "true") {
+            document.body.classList.add("light");
+        }
+
+        /* CAROUSEL AUTO SLIDE + PAUSE */
+        const carousel = document.getElementById("carousel");
+        let index = 0;
+        let interval;
+
+        function startSlide() {
+            interval = setInterval(() => {
+                index = (index + 1) % carousel.children.length;
+                carousel.children[index].scrollIntoView({ behavior: "smooth" });
+            }, 4000);
+        }
+
+        function stopSlide() {
+            clearInterval(interval);
+        }
+
+        carousel.addEventListener("mouseenter", stopSlide);
+        carousel.addEventListener("mouseleave", startSlide);
+        carousel.addEventListener("focusin", stopSlide);
+        carousel.addEventListener("focusout", startSlide);
+        startSlide();
+
+        /* INTERACTION + HEATMAP */
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", () => {
+                card.classList.toggle("active");
+                track(card.querySelector(".project-title").innerText);
+                renderAnalytics();
+            });
+        });
+
+        /* TRACKING */
+        function track(project) {
+            const data = JSON.parse(localStorage.getItem("heatmap") || "{}");
+            data[project] = (data[project] || 0) + 1;
+            localStorage.setItem("heatmap", JSON.stringify(data));
+        }
+
+        /* ANALYTICS DASHBOARD */
+        function renderAnalytics() {
+            const data = JSON.parse(localStorage.getItem("heatmap") || "{}");
+            const container = document.getElementById("analyticsData");
+            container.innerHTML = "";
+
+            Object.entries(data).forEach(([project, count]) => {
+                const row = document.createElement("div");
+                row.innerHTML = `
+          <strong>${project}</strong> (${count})
+          <div class="bar">
+            <div class="bar-fill" style="width:${Math.min(count * 20, 100)}%"></div>
+          </div>
+        `;
+                container.appendChild(row);
+            });
+        }
+
+        renderAnalytics();
     </script>
 
 </body>
