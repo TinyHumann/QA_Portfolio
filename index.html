@@ -14,6 +14,7 @@
             --text: #e5e7eb;
             --muted: #94a3b8;
             --accent: #38bdf8;
+            --primary: #4f46e5;
             --scribble: #facc15;
         }
 
@@ -23,6 +24,7 @@
             --text: #0f172a;
             --muted: #475569;
             --accent: #2563eb;
+            --primary: #4f46e5;
             --scribble: #fbbf24;
         }
 
@@ -245,6 +247,24 @@
             transform: translateY(0);
         }
 
+        /* Buttons inside project-details */
+        .project-details .btn {
+            display: inline-block;
+            margin: 6px 6px 0 0;
+            padding: 8px 14px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+            .project-details .btn:hover {
+                transform: translateY(-3px);
+            }
+
         /* SECTIONS */
         .section {
             max-width: 900px;
@@ -343,7 +363,7 @@
     <!-- ABOUT ME -->
     <section id="about">
         <h2>About Me</h2>
-        <p>I am a detail-oriented QA Engineer with hands-on experience in manual, automated, and mobile testing. I design test strategies, identify critical defects, and improve product quality across fintech and web-based applications. I am US/UK remote-ready.</p>
+        <p>I am a detail-oriented QA Engineer with hands-on experience in manual, automated, and mobile testing. I design test strategies, identify critical defects, and improve product quality across fintech and web-based applications. US/UK remote-ready.</p>
     </section>
 
     <!-- PROJECTS -->
@@ -356,17 +376,23 @@
                     <div class="project-title">LemFi Mobile App — Fintech QA</div>
                     <div class="project-tools">Appium · WebdriverIO · JavaScript</div>
                     <div class="project-details">
-                        Led manual and automated testing for onboarding, KYC verification, and transaction flows.
-                        Validated edge cases, error handling, and regulatory compliance to improve release quality.
+                        Designed and implemented a comprehensive end-to-end automated test framework for a fintech mobile app’s onboarding flow. Covered country selection, identity verification, and error handling, ensuring reliable user experience and regulatory compliance.
+                        <div>
+                            <a class="btn" href="https://github.com/TinyHumann/Lemfi_Autoumation" target="_blank">View GitHub Repo</a>
+                            <a class="btn" href="https://docs.google.com/document/d/1y5x0u6kER3zPaezWrBa7KW5t_77DMN7fk_jnxsUC5Iw/edit?usp=sharing" target="_blank">View Test Plan</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-title">Amazon Web App — E-commerce Testing</div>
-                    <div class="project-tools">Cypress · Selenium · Manual QA</div>
+                    <div class="project-tools">Javascript, Playwright</div>
                     <div class="project-details">
-                        Functional and regression testing on product discovery, filters, cart persistence, and checkout flows.
-                        Applied risk-based testing to prioritize revenue-critical scenarios.
+                        Executed functional and regression tests for Amazon web app, covering product discovery, filtering and cart persistence. Applied risk-based testing to prioritize revenue-critical user journeys.
+                        <div>
+                            <a class="btn" href="https://github.com/TinyHumann/Amazon_Test" target="_blank">View GitHub Repo</a>
+                            <a class="btn" href="#" target="_blank">View Test Plan</a>
+                        </div>
                     </div>
                 </div>
 
@@ -374,8 +400,10 @@
                     <div class="project-title">SauceDemo — Manual Test Planning</div>
                     <div class="project-tools">Test Case Design · Bug Reporting</div>
                     <div class="project-details">
-                        Developed structured test plans and test cases covering functional, boundary, and negative scenarios.
-                        Ensured traceability between requirements and expected outcomes.
+                        Developed structured test plans and test cases covering functional, boundary, and negative scenarios across login, cart, and checkout. Ensured traceability between requirements and expected outcomes.
+                        <div>
+                            <a class="btn" href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q/edit?usp=drive_link" target="_blank">View Test Plan</a>
+                        </div>
                     </div>
                 </div>
 
@@ -383,8 +411,11 @@
                     <div class="project-title">The Internet App — Web Automation</div>
                     <div class="project-tools">Selenium · JavaScript</div>
                     <div class="project-details">
-                        Automated UI tests for forms, alerts, authentication, and dynamic elements.
-                        Handled asynchronous behavior and edge-case user interactions for robust coverage.
+                        Automated UI tests for web application forms, alerts, authentication, and dynamic elements. Handled asynchronous behavior and edge-case interactions for reliable coverage.
+                        <div>
+                            <a class="btn" href="https://github.com/TinyHumann/The_Internet" target="_blank">View GitHub Repo</a>
+                            
+                        </div>
                     </div>
                 </div>
 
@@ -393,7 +424,7 @@
                     <div class="project-title">LemFi Mobile App — Fintech QA</div>
                     <div class="project-tools">Appium · WebdriverIO · JavaScript</div>
                     <div class="project-details">
-                        Led manual and automated testing for onboarding, KYC verification, and transaction flows.
+                        Designed and implemented a comprehensive end-to-end automated test framework for onboarding and KYC flows.
                     </div>
                 </div>
 
