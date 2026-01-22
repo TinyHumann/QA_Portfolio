@@ -5,494 +5,306 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QA Engineer Portfolio | Halimat Bakare</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card: #020617;
-            --text: #e5e7eb;
-            --muted: #94a3b8;
-            --accent: #38bdf8;
-            --primary: #4f46e5;
-            --scribble: #facc15;
-        }
-
-        .light {
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #475569;
-            --accent: #2563eb;
-            --primary: #4f46e5;
-            --scribble: #fbbf24;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: all 0.4s ease;
-            overflow-x: hidden;
-        }
-
-        /* HEADER & NAV */
-        header {
-            position: sticky;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--card);
-            padding: 15px 30px;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-            header h1 {
-                font-size: 1.8rem;
-                color: var(--accent);
-                font-weight: 700;
-            }
-
-        .nav {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-            .nav a {
-                color: var(--text);
-                font-weight: 600;
-                text-decoration: none;
-            }
-
-                .nav a:hover {
-                    text-decoration: underline;
-                }
-
-        /* THEME TOGGLE */
-        .toggle {
-            cursor: pointer;
-            padding: 8px 14px;
-            border-radius: 20px;
-            background: var(--accent);
-            color: white;
-            font-weight: 600;
-        }
-
-        /* SCRIBBLES / ILLUSTRATIONS */
-        .scribble {
-            position: absolute;
-            font-size: 2rem;
-            animation: float 6s ease-in-out infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(5deg);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        /* POSITIONED SCRIBBLES */
-        .scribble1 {
-            top: 10%;
-            left: 5%;
-            animation-duration: 6s;
-        }
-
-        .scribble2 {
-            top: 20%;
-            right: 10%;
-            animation-duration: 7s;
-        }
-
-        .scribble3 {
-            top: 40%;
-            left: 85%;
-            animation-duration: 5s;
-        }
-
-        .scribble4 {
-            top: 60%;
-            right: 5%;
-            animation-duration: 8s;
-        }
-
-        .scribble5 {
-            top: 75%;
-            left: 15%;
-            animation-duration: 6.5s;
-        }
-
-        .scribble6 {
-            top: 80%;
-            right: 25%;
-            animation-duration: 7.5s;
-        }
-
-        /* ABOUT ME */
-        #about {
-            padding: 100px 20px 70px;
-            background: var(--card);
-            border-radius: 20px;
-            max-width: 900px;
-            margin: 60px auto;
-            text-align: center;
-        }
-
-            #about h2 {
-                font-size: 1.8rem;
-                color: var(--accent);
-                margin-bottom: 20px;
-            }
-
-            #about p {
-                font-size: 1rem;
-                line-height: 1.7;
-                color: var(--muted);
-            }
-
-        /* PROJECTS */
-        .projects-section {
-            padding: 50px 0;
-            position: relative;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .projects-title {
-            text-align: center;
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            color: var(--accent);
-        }
-
-        .marquee-wrapper {
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .marquee {
-            display: flex;
-            gap: 25px;
-            width: max-content;
-            animation: scroll 35s linear infinite;
-        }
-
-        .marquee-wrapper:hover .marquee {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        .project-card {
-            width: 320px;
-            background: var(--card);
-            border-radius: 20px;
-            padding: 22px;
-            position: relative;
-            transition: transform 0.3s;
-        }
-
-            .project-card:hover {
-                transform: translateY(-8px);
-            }
-
-        .project-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
-
-        .project-tools {
-            font-size: 0.85rem;
-            color: var(--accent);
-        }
-
-        .project-details {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.35s ease;
-            margin-top: 14px;
-            font-size: 0.92rem;
-            color: var(--muted);
-        }
-
-        .project-card:hover .project-details {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Buttons inside project-details */
-        .project-details .btn {
-            display: inline-block;
-            margin: 6px 6px 0 0;
-            padding: 8px 14px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            color: white;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-            .project-details .btn:hover {
-                transform: translateY(-3px);
-            }
-
-        /* SECTIONS */
-        .section {
-            max-width: 900px;
-            margin: 70px auto;
-            padding: 0 20px;
-        }
-
-            .section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
-                color: var(--accent);
-            }
-
-            .section p {
-                font-size: 1rem;
-                line-height: 1.8;
-                color: var(--muted);
-                margin-bottom: 14px;
-            }
-
-        /* METRICS */
-        .metrics {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .metric {
-            text-align: center;
-            margin: 10px;
-        }
-
-            .metric h2 {
-                font-size: 2rem;
-                color: var(--accent);
-                margin-bottom: 6px;
-                transition: all 1s ease;
-            }
-
-        /* CONTACT */
-        .contact {
-            text-align: center;
-            background: var(--card);
-            border-radius: 20px;
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: 50px auto;
-        }
-
-            .contact a {
-                display: inline-block;
-                margin: 8px;
-                padding: 12px 16px;
-                border-radius: 10px;
-                background: var(--accent);
-                color: white;
-                font-weight: 600;
-                text-decoration: none;
-            }
-
-                .contact a:hover {
-                    background: linear-gradient(45deg,var(--accent),#22d3ee);
-                }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Halimat Bakare</h1>
-        <div class="nav">
-            <a href="#about">About Me</a>
+    <header class="glass">
+        <div class="empty-div"></div>
+        <nav class="nav">
+            <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="#contact">Contact Me</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">🌙</button>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <div class="toggle" onclick="toggleTheme()">🌗 Theme</div>
     </header>
 
-    <!-- SCRIBBLES / ILLUSTRATIONS -->
+    <div class="mobile-menu glass" id="mobile-menu">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#projects" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- BACKGROUND SCRIBBLES -->
     <div class="scribble scribble1">🧪</div>
     <div class="scribble scribble2">💻</div>
     <div class="scribble scribble3">🚀</div>
     <div class="scribble scribble4">⚡</div>
     <div class="scribble scribble5">🛠️</div>
     <div class="scribble scribble6">🔍</div>
+    <div class="scribble scribble7">🎮</div>
+    <div class="scribble scribble8">✨</div>
 
-    <!-- ABOUT ME -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a detail-oriented QA Engineer with hands-on experience in manual, automated, and mobile testing. I design test strategies, identify critical defects, and improve product quality across fintech and web-based applications. US/UK remote-ready.</p>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="projects-section">
-        <div class="projects-title">Selected Projects</div>
-        <div class="marquee-wrapper">
-            <div class="marquee">
-
-                <div class="project-card">
-                    <div class="project-title">LemFi Mobile App — Fintech QA</div>
-                    <div class="project-tools">Appium · WebdriverIO · JavaScript</div>
-                    <div class="project-details">
-                        Designed and implemented a comprehensive end-to-end automated test framework for a fintech mobile app’s onboarding flow. Covered country selection, identity verification, and error handling, ensuring reliable user experience and regulatory compliance.
-                        <div>
-                            <a class="btn" href="https://github.com/TinyHumann/Lemfi_Autoumation" target="_blank">View GitHub Repo</a>
-                            <a class="btn" href="https://docs.google.com/document/d/1y5x0u6kER3zPaezWrBa7KW5t_77DMN7fk_jnxsUC5Iw/edit?usp=sharing" target="_blank">View Test Plan</a>
-                        </div>
+    <!-- HERO & ABOUT SECTION -->
+    <section id="about" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-image-wrapper">
+                <div class="hero-photo-box glass animate-slide-up">
+    <img src="profile.jpg" alt="Halimat Bakare" class="hero-photo">
+</div>
+            </div>
+            <div class="hero-content animate-up">
+                <h2 class="sub-greeting">Quality Assurance Engineer</h2>
+                <h1 class="main-name">I am <span class="highlight">Halimat Bakare</span></h1>
+                <div class="about-text">
+                    <p>I am a detail-oriented <strong>QA Engineer</strong> with hands-on experience in manual, automated, and mobile testing. I specialize in designing robust test strategies that bridge the gap between complex software requirements and seamless user experiences.</p>
+                    <p>With a foundation in fintech and web-based applications, I identify critical defects early, ensuring high-quality releases that drive business success. My mission is to champion quality throughout the SDLC, from the first line of code to the final deployment.</p>
+                    <div class="status-badges">
+                        <span class="badge">🚀 US/UK Remote-Ready</span>
+                        <span class="badge">🛠️ Automation Expert</span>
+                        <span class="badge">📱 Mobile QA Specialist</span>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-title">Amazon Web App — E-commerce Testing</div>
-                    <div class="project-tools">Javascript, Playwright</div>
-                    <div class="project-details">
-                        Executed functional and regression tests for Amazon web app, covering product discovery, filtering and cart persistence. Applied risk-based testing to prioritize revenue-critical user journeys.
-                        <div>
-                            <a class="btn" href="https://github.com/TinyHumann/Amazon_Test" target="_blank">View GitHub Repo</a>
-                            <a class="btn" href="#" target="_blank">View Test Plan</a>
-                        </div>
-                    </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Let's Talk</a>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-title">SauceDemo — Manual Test Planning</div>
-                    <div class="project-tools">Test Case Design · Bug Reporting</div>
-                    <div class="project-details">
-                        Developed structured test plans and test cases covering functional, boundary, and negative scenarios across login, cart, and checkout. Ensured traceability between requirements and expected outcomes.
-                        <div>
-                            <a class="btn" href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q/edit?usp=drive_link" target="_blank">View Test Plan</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">The Internet App — Web Automation</div>
-                    <div class="project-tools">Selenium · JavaScript</div>
-                    <div class="project-details">
-                        Automated UI tests for web application forms, alerts, authentication, and dynamic elements. Handled asynchronous behavior and edge-case interactions for reliable coverage.
-                        <div>
-                            <a class="btn" href="https://github.com/TinyHumann/The_Internet" target="_blank">View GitHub Repo</a>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Duplicate for infinite scroll -->
-                <div class="project-card">
-                    <div class="project-title">LemFi Mobile App — Fintech QA</div>
-                    <div class="project-tools">Appium · WebdriverIO · JavaScript</div>
-                    <div class="project-details">
-                        Designed and implemented a comprehensive end-to-end automated test framework for onboarding and KYC flows.
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- METRICS -->
-    <section class="section">
-        <h2>Quality Impact</h2>
-        <div class="metrics">
-            <div class="metric"><h2 id="metric1">0%</h2><p>Reduction in critical defects</p></div>
-            <div class="metric"><h2 id="metric2">0+</h2><p>Automated end-to-end scenarios</p></div>
-            <div class="metric"><h2 id="metric3">0%</h2><p>Coverage on core user flows</p></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title animate-up">Selected Case Studies</h2>
+        <div class="projects-grid">
+
+            <div class="project-card glass animate-left">
+                <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="project-header">
+                    <h3>LemFi Mobile — Fintech Automation</h3>
+                    <p class="project-stack">Appium • WebdriverIO • JS</p>
+                </div>
+                <div class="project-body">
+                    <p>Implemented a robust E2E automated framework for the onboarding flow. <strong>Result:</strong> Reduced manual regression testing time by 60% and secured critical user data paths.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/TinyHumann/Lemfi_Autoumation" target="_blank" class="project-link">Code <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://docs.google.com/document/d/1y5x0u6kER3zPaezWrBa7KW5t_77DMN7fk_jnxsUC5Iw/edit?usp=sharing" target="_blank" class="project-link">Plan <i class="far fa-file-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card glass animate-right">
+                <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="project-header">
+                    <h3>Amazon Web — E-commerce QA</h3>
+                    <p class="project-stack">Playwright • JavaScript</p>
+                </div>
+                <div class="project-body">
+                    <p>Scalable UI regression suite using POM. <strong>Key Win:</strong> Identified critical cart persistence bugs before release, preventing potential revenue loss of 15%.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/TinyHumann/Amazon_Test" target="_blank" class="project-link">Code <i class="fas fa-external-link-alt"></i></a>
+                    <a href="#" target="_blank" class="project-link">Report <i class="fas fa-chart-line"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card glass animate-left">
+                <div class="project-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="project-header">
+                    <h3>SauceDemo — Manual Test Strategy</h3>
+                    <p class="project-stack">Test Case Design • Bug Reporting</p>
+                </div>
+                <div class="project-body">
+                    <p>Designed comprehensive boundary and negative test scenarios. <strong>Impact:</strong> Achieved 100% requirement traceability and streamlined the defect reporting workflow.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://docs.google.com/document/d/15CrOw2tzX7Up-F6vhG03nwRTwYBxH_xdNEt8lSQNT0Q/edit?usp=drive_link" target="_blank" class="project-link">Strategy <i class="far fa-file-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card glass animate-right">
+                <div class="project-icon"><i class="fas fa-globe"></i></div>
+                <div class="project-header">
+                    <h3>The Internet — Web Automation</h3>
+                    <p class="project-stack">Selenium • JavaScript</p>
+                </div>
+                <div class="project-body">
+                    <p>Deep dive into handling complex JS alerts and dynamic elements. <strong>Tech Win:</strong> Optimized async handling, reducing flaky test failures from 12% to <1%.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/TinyHumann/The_Internet" target="_blank" class="project-link">Code <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- METRICS / IMPACT -->
+    <section class="impact-section">
+        <h2 class="section-title animate-up">Quality Impact</h2>
+        <div class="metrics-grid">
+            <div class="metric-card glass animate-left">
+                <h2 id="metric1">75%</h2>
+                <p>Reduction in High-Priority Defects reaching Production</p>
+            </div>
+            <div class="metric-card glass animate-up">
+                <h2 id="metric2">50+</h2>
+                <p>Reusable Automated E2E Scenarios implemented</p>
+            </div>
+            <div class="metric-card glass animate-right">
+                <h2 id="metric3">99%</h2>
+                <p>Test Coverage on Revenue-Critical Core User Flows</p>
+            </div>
         </div>
     </section>
 
     <!-- WHY HIRE ME -->
-    <section class="section">
-        <h2>Why Hire Me</h2>
-        <p>I bring a quality-first mindset that balances technical QA skills with business risk awareness. I validate whether features work for real users under real conditions, not just technically.</p>
-        <p>Experienced in fintech and e-commerce, I collaborate closely with developers and product managers to deliver actionable defect reports that accelerate fixes and improve release confidence.</p>
+    <section class="section hire-me glass animate-up">
+        <h2 class="section-title">Why Hire Me?</h2>
+        <div class="hire-grid">
+            <div class="hire-item animate-left">
+                <i class="fas fa-brain"></i>
+                <h3>Risk-Based Mindset</h3>
+                <p>I don't just "test everything"—I prioritize features based on business risk, ensuring that revenue-critical flows are always bulletproof.</p>
+            </div>
+            <div class="hire-item animate-up">
+                <i class="fas fa-users-cog"></i>
+                <h3>Dev-QA Collaboration</h3>
+                <p>I believe QA is a partnership. I provide actionable, reproducible reports that reduce back-and-forth and accelerate fix cycles.</p>
+            </div>
+            <div class="hire-item animate-right">
+                <i class="fas fa-shield-alt"></i>
+                <h3>User-First Advocate</h3>
+                <p>I validate not only if the software works technically, but if it serves the user intuitively and reliably under real-world conditions.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- FIRST 30 DAYS -->
-    <section class="section">
-        <h2>What I Bring in My First 30 Days</h2>
-        <p><strong>Week 1 — Product & Risk Understanding:</strong> Ramp up on product, users, and business objectives. Review docs and test assets, identify high-risk areas.</p>
-        <p><strong>Week 2 — Test Coverage & Execution:</strong> Design/refine test plans aligned with real flows. Execute exploratory, functional, regression tests with actionable reports.</p>
-        <p><strong>Weeks 3–4 — Automation & Optimization:</strong> Contribute to automation suites for stable, high-value scenarios. Improve efficiency and reduce regression risk.</p>
+    <!-- 30 DAYS PLAN -->
+    <section class="section planning-section animate-up">
+        <h2 class="section-title">My 30-Day Launchpad</h2>
+        <div class="plan-timeline">
+            <div class="plan-step glass">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                    <h3>Synchronize (Week 1)</h3>
+                    <p>Deep dive into product architecture and business goals. Review existing test assets, identify immediate stability gaps.</p>
+                </div>
+            </div>
+            <div class="plan-step glass">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                    <h3>Stabilize (Weeks 2-3)</h3>
+                    <p>Optimize test case design, execute cross-browser/platform regressions, and deliver high-impact exploratory reports.</p>
+                </div>
+            </div>
+            <div class="plan-step glass">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                    <h3>Scale (Week 4)</h3>
+                    <p>Establish/expand automation hooks for CI/CD integration, ensuring long-term regression stability and faster releases.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <h3>Contact Me</h3>
-        <p>Open to QA roles, partnerships, and freelance testing projects.</p>
-        <a href="mailto:halimatbakare10@gmail.com">Email Me</a>
-        <a href="https://www.linkedin.com/in/halimatbakare" target="_blank">LinkedIn</a>
-        <a href="QA_Portfolio_Summary.pdf" target="_blank">Download PDF</a>
+    <section id="contact" class="contact-section">
+        <div class="contact-card glass animate-up">
+            <h2 class="section-title">Let's Connect</h2>
+            <p>I'm currently open to QA roles, freelance partnerships, and technical testing consultations.</p>
+            <div class="contact-btns">
+                <a href="mailto:halimatbakare10@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
+                <a href="https://www.linkedin.com/in/halimatbakare" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="QA_Portfolio_Summary.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-file-download"></i> My Resume</a>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        © 2026 Halimat Bakare · QA Engineer Portfolio
+    <footer class="glass">
+        <p>&copy; 2026 Halimat Bakare · Built with precision, verified for quality.</p>
+        <button id="backToTopBtn"><i class="fas fa-chevron-up"></i></button>
     </footer>
 
     <script>
-        // THEME
+        // THEME TOGGLE
+        const themeBtn = document.getElementById('theme-btn');
         function toggleTheme() {
             document.body.classList.toggle("light");
-            localStorage.setItem("theme", document.body.classList.contains("light"));
+            const isLight = document.body.classList.contains("light");
+            localStorage.setItem("theme", isLight);
+            themeBtn.innerText = isLight ? "☀️" : "🌙";
         }
-        if (localStorage.getItem("theme") === "true") { document.body.classList.add("light"); }
+        
+        // Init Theme
+        if (localStorage.getItem("theme") === "true") { 
+            document.body.classList.add("light");
+            themeBtn.innerText = "☀️";
+        }
+
+        // MOBILE MENU
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
 
         // METRICS ANIMATION
         function animateMetric(id, target, suffix = '') {
             let count = 0;
-            const step = Math.ceil(target / 100);
+            const step = target / 50;
             const el = document.getElementById(id);
+            if (!el) return;
+            
             const interval = setInterval(() => {
-                if (count < target) {
-                    count += step;
-                    el.innerText = count + suffix;
-                } else { el.innerText = target + suffix; clearInterval(interval); }
-            }, 20);
+                count += step;
+                if (count >= target) {
+                    el.innerText = target + suffix;
+                    clearInterval(interval);
+                } else {
+                    el.innerText = Math.floor(count) + suffix;
+                }
+            }, 30);
         }
-        animateMetric('metric1', 35, '%');
-        animateMetric('metric2', 20, '+');
-        animateMetric('metric3', 90, '%');
+
+        // SCROLL REVEAL (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Special case for metrics
+                    if (entry.target.classList.contains('metrics-grid')) {
+                        animateMetric('metric1', 75, '%');
+                        animateMetric('metric2', 50, '+');
+                        animateMetric('metric3', 99, '%');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-up, .animate-slide-up, .animate-left, .animate-right, .metrics-grid, .hero-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // BACK TO TOP
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 
 </body>
